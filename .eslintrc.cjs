@@ -6,6 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     "plugin:prettier/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "prettier"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
@@ -24,6 +25,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+
     "one-var": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/accessible-emoji": "off",
@@ -33,6 +35,8 @@ module.exports = {
     "simple-import-sort/exports": "error",
     "array-bracket-spacing": "error",
     "no-unused-labels": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
+
     "arrow-body-style": ["error", "as-needed"],
     "autofix/no-unused-vars": [
       "warn",

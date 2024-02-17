@@ -26,6 +26,6 @@
       ]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/service", "src/utility"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

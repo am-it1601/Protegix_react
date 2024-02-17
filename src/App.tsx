@@ -1,13 +1,25 @@
-import './App.css';
-
 import { Button } from './components/ui/button';
-import env from './config';
+import { useDataFetch } from './service/queries';
+
 const App = () => {
-  console.info(env);
+  const { data, isLoading, refetch: fetchPost } = useDataFetch();
+
+  console.info(data);
+
+  const handleFetchData = () => {
+    console.info('clicked');
+    fetchPost();
+  };
+
   return (
     <>
       <h1 className="text-3xl font-bold text-center underline bg-red-400">Protegix1</h1>
-      <Button>Add</Button>
+
+      <span></span>
+
+      <Button onClick={handleFetchData} disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Add'}
+      </Button>
     </>
   );
 };
