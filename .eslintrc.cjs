@@ -37,7 +37,7 @@ module.exports = {
     "no-unused-labels": "warn",
     "@typescript-eslint/no-explicit-any": "off",
 
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": ["Off", "as-needed"],
     "autofix/no-unused-vars": [
       "warn",
       {

@@ -8,7 +8,7 @@ export function useDataFetch() {
     queryKey: ['posts'],
     queryFn: fetchData,
     enabled: false,
-    refetchOnMount: 'always', // Do not refetch when the component mounts
+    refetchOnMount: true, // Do not refetch when the component mounts
     retry: 0,
   });
 }
