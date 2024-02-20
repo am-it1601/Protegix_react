@@ -80,11 +80,11 @@ const Sidebar = () => {
   ];
   const navLinks = [
     { to: '/', text: 'All Apps', icon: <AiOutlineAppstore size={23} className="min-w-max" /> },
-    { to: '/About', text: 'About', icon: <BsPerson size={23} className="min-w-max" /> },
+    { to: '/users', text: 'Users', icon: <BsPerson size={23} className="min-w-max" /> },
     { to: '/stroage', text: 'Storage', icon: <HiOutlineDatabase size={23} className="min-w-max" /> },
   ];
   return (
-    <div>
+    <div className="fixed bg-red-500 outline-dashed">
       <div
         onClick={() => setOpen(false)}
         className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${open ? 'block' : 'hidden'} `}></div>

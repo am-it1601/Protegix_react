@@ -4,13 +4,14 @@ import Navbar from '@/components/navbar';
 import Sidebar from '@/components/sidebar';
 import Home from '@/pages/Home';
 import PageNoteFound from '@/pages/pageNoteFound';
+import User from '@/pages/user';
 
 export const Layout = () => {
   return (
     <div>
-      <div className="flex">
+      <div className="flex h-[100vh]  ">
         <Sidebar />
-        <div className="flex flex-col w-full h-full px-5">
+        <div className="flex flex-col w-full h-full ">
           <div className="text-center ">
             <Navbar />
           </div>
@@ -34,8 +35,8 @@ const routes = [
         element: <Home />,
       },
       {
-        path: 'about',
-        element: <div>about</div>,
+        path: 'users',
+        element: <User />,
       },
     ],
   },
