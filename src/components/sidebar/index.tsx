@@ -84,7 +84,7 @@ const Sidebar = () => {
     { to: '/stroage', text: 'Storage', icon: <HiOutlineDatabase size={23} className="min-w-max" /> },
   ];
   return (
-    <div className="fixed bg-red-500 outline-dashed">
+    <aside className="sticky top-0 bottom-0 z-20">
       <div
         onClick={() => setOpen(false)}
         className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${open ? 'block' : 'hidden'} `}></div>
@@ -165,7 +165,7 @@ const Sidebar = () => {
       <div className="m-3 md:hidden " onClick={() => setOpen(true)}>
         <MdMenu size={25} />
       </div>
-    </div>
+    </aside>
   );
 };
 

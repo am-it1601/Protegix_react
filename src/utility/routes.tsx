@@ -8,20 +8,21 @@ import User from '@/pages/user';
 
 export const Layout = () => {
   return (
-    <div>
-      <div className="flex h-[100vh]  ">
-        <Sidebar />
-        <div className="flex flex-col w-full h-full ">
-          <div className="text-center ">
-            <Navbar />
-          </div>
-          <div className="">
-            <Outlet />
+    <>
+      <div>
+        <div className="flex items-start">
+          <Sidebar />
+          <div className="flex flex-col w-full h-full ">
+            <div className="text-center ">
+              <Navbar />
+            </div>
+            <div className="p-3 my-16">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
-      {/* <div>footer</div> */}
-    </div>
+    </>
   );
 };
 const routes = [

@@ -102,7 +102,7 @@ export default function UserRole() {
             />
           )} */}
 
-          <Button type="submit" className="w-full" variant={'outline'}>
+          <Button type="submit" className="w-full">
             Submit
           </Button>
         </form>

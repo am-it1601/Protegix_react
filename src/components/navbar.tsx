@@ -2,7 +2,7 @@ import '../App.css';
 
 import { useState } from 'react';
 
-const TabButtons = () => {
+const Navbar = () => {
   const [activeTab, setActiveTab] = useState('profile');
 
   const buttons = [
@@ -40,8 +40,8 @@ const TabButtons = () => {
     //     ))}
     //   </ul>
     // </div>
-    <div className="h-[70px] bg-slate-200 text-center">navbar</div>
+    <div className="h-[65px] bg-slate-200 text-center fixed top-0 w-full z-10"></div>
   );
 };
 
-export default TabButtons;
+export default Navbar;
