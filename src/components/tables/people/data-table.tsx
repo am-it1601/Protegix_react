@@ -12,6 +12,7 @@ import {
 } from '@tanstack/react-table';
 import React from 'react';
 
+import Filters from '@/components/filters';
 // import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
 import {
@@ -20,7 +21,7 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 // import { downloadToExcel } from '@/lib/xlsx';
@@ -57,19 +58,20 @@ export function PeopleDataTable<TData, TValue>({ columns, data }: DataTableProps
       rowSelection,
     },
   });
-
+  console.info(columnFilters);
   return (
     <div>
       {/* input */}
       <div className="flex items-center py-4">
-        <Input
+        <Filters columnFilters={columnFilters} setColumnFilters={setColumnFilters} />
+        {/* <Input
           placeholder="Filter First names"
           value={(table.getColumn('first_name')?.getFilterValue() as string) || ''}
           onChange={(e) => {
             table.getColumn('first_name')?.setFilterValue(e.target.value);
           }}
           className="max-w-sm"
-        />
+        /> */}
         {/* 
         <Button onClick={() => downloadToExcel()} className="ml-4">
           Export to Excel
