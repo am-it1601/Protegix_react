@@ -9,27 +9,12 @@ import { Button } from './ui/button';
 
 const filterValue = [
   { id: 1, name: 'Female' },
-  { id: 2, name: 'Male' },
+  { id: 2, name: 'male' },
   { id: 3, name: 'Both' },
 ];
 
 export function PoopOver({ setColumnFilters, columnFilters }: any) {
   const filterStatuses = columnFilters.find((f: any) => f.id === 'gender')?.value || [];
-
-  // const handleCheckboxClick = (id: number) => {
-  //   const updatedStatuses = filterStatuses.includes(id)
-  //     ? filterStatuses.filter((status: number) => status !== id)
-  //     : [...filterStatuses, id];
-  //   setColumnFilters((prev: any[]) => {
-  //     const existingIndex = prev.findIndex((filter) => filter.id === 'gender');
-  //     if (existingIndex !== -1) {
-  //       prev[existingIndex].value = updatedStatuses;
-  //       return [...prev];
-  //     } else {
-  //       return [...prev, { id: 'gender', value: updatedStatuses }];
-  //     }
-  //   });
-  // };
 
   return (
     <>
@@ -41,7 +26,7 @@ export function PoopOver({ setColumnFilters, columnFilters }: any) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           {filterValue.map((column, index) => {
-            const checked = filterStatuses.includes(column.id); // Determine checked status
+            const checked = filterStatuses.includes(column.name); // Determine checked status
             return (
               <DropdownMenuCheckboxItem
                 key={index}
@@ -53,7 +38,7 @@ export function PoopOver({ setColumnFilters, columnFilters }: any) {
                     if (!statuses) {
                       return prev.concat({
                         id: 'gender',
-                        value: [column.id],
+                        value: [column.name],
                       });
                     }
 
@@ -61,7 +46,9 @@ export function PoopOver({ setColumnFilters, columnFilters }: any) {
                       f.id === 'gender'
                         ? {
                             ...f,
-                            value: checked ? statuses.filter((s: any) => s !== column.id) : statuses.concat(column.id),
+                            value: checked
+                              ? statuses.filter((s: any) => s !== column.name)
+                              : statuses.concat(column.name),
                           }
                         : f
                     );

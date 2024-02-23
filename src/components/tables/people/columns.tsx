@@ -84,6 +84,7 @@ export const columns: ColumnDef<Person>[] = [
     filterFn: (row, columnId, filterStatuses) => {
       if (filterStatuses.length === 0) return true;
       const status = row.getValue(columnId);
+      console.info({ row, columnId, filterStatuses, status });
       return filterStatuses.includes(status);
     },
   },

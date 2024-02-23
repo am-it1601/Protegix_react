@@ -53,7 +53,6 @@ export function PeopleDataTable<TData, TValue>({ columns, data }: DataTableProps
       rowSelection,
     },
   });
-  console.info(columnFilters);
   return (
     <div>
       {/* input */}
