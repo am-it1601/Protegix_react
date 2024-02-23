@@ -1,18 +1,5 @@
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  SortingState,
-  useReactTable,
-  VisibilityState,
-} from '@tanstack/react-table';
-import React from 'react';
+import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table';
 
-import Filters from '@/components/filters';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -27,50 +14,20 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function PeopleDataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-
+export function NormalTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
   });
-  console.info(columnFilters);
   return (
     <div>
       {/* input */}
-      <div className="flex items-center py-4">
-        <Filters columnFilters={columnFilters} setColumnFilters={setColumnFilters} />
-        {/* <Input
-          placeholder="Filter First names"
-          value={(table.getColumn('first_name')?.getFilterValue() as string) || ''}
-          onChange={(e) => {
-            table.getColumn('first_name')?.setFilterValue(e.target.value);
-          }}
-          className="max-w-sm"
-        /> */}
-
+      <div className="flex items-center justify-end py-4">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button variant="outline" className="ml-4">
+            <Button variant="outline" className="">
               Columns
             </Button>
           </DropdownMenuTrigger>
@@ -104,7 +61,7 @@ export function PeopleDataTable<TData, TValue>({ columns, data }: DataTableProps
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id}>
+                      <TableHead key={header.id} className="font-bold">
                         {flexRender(header.column.columnDef.header, header.getContext())}
                       </TableHead>
                     );
@@ -160,4 +117,4 @@ export function PeopleDataTable<TData, TValue>({ columns, data }: DataTableProps
   );
 }
 
-export default PeopleDataTable;
+export default NormalTable;

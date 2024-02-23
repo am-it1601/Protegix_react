@@ -1,11 +1,14 @@
-import { people } from '@/assets/people';
 import UserRole from '@/components/form/userRole';
-import { columns } from '@/components/tables/people/columns';
-import PeopleDataTable from '@/components/tables/people/data-table';
-// import { DataTablePagination } from '@/components/tables/people/data-table-pagination';
+import NormalTable from '@/components/tables/TableColumn/Table';
+import { user_role_column } from '@/components/tables/TableColumn/user-columns';
+import { user_group_columns } from '@/components/tables/TableColumn/usergroup-column';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useUserFatchGroup, useUserFatchRole } from '@/service/queries';
 
 const User = () => {
+  const { data: userRole } = useUserFatchRole();
+  const { data: userGroup } = useUserFatchGroup();
+
   return (
     <>
       <Tabs defaultValue="user" className="w-full ">
@@ -18,10 +21,13 @@ const User = () => {
         </div>
         <div className="">
           <TabsContent value="user">
-            <PeopleDataTable columns={columns} data={people} />
+            {/* {<PeopleDataTable columns={columns} data={people} />} */}
+            {userRole && <NormalTable columns={user_role_column} data={userRole.data} />}
             {/* <DataTablePagination table={PeopleDataTable} /> */}
           </TabsContent>
-          <TabsContent value="userGroup">Change your password userGroup.</TabsContent>
+          <TabsContent value="userGroup">
+            {userGroup && <NormalTable columns={user_group_columns} data={userGroup.data} />}
+          </TabsContent>
           <TabsContent value="userRole">
             <UserRole />
           </TabsContent>

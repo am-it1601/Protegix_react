@@ -1,7 +1,5 @@
 import axiosInstance from './axiosInstance';
 import { globalErrorHandler } from './globalErrorHandler';
 
-export const fetchData = async () => globalErrorHandler(() => axiosInstance.get(''));
-
-export const addNewNote = async (note: any) =>
-  globalErrorHandler(() => axiosInstance.post('', note), 'Note added successfully');
+export const UserRole = async () => globalErrorHandler(() => axiosInstance.get('/user-role'));
+export const UserGroup = async () => globalErrorHandler(() => axiosInstance.get('/user-group'));

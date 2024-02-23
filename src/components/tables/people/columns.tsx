@@ -79,6 +79,13 @@ export const columns: ColumnDef<Person>[] = [
   {
     header: 'Gender',
     accessorKey: 'gender',
+    enableSorting: false,
+    enableColumnFilter: true,
+    filterFn: (row, columnId, filterStatuses) => {
+      if (filterStatuses.length === 0) return true;
+      const status = row.getValue(columnId);
+      return filterStatuses.includes(status);
+    },
   },
   {
     header: 'Date of Birth',
