@@ -1,15 +1,11 @@
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Button } from './components/ui/button';
-import env from './config';
+import routes from './utility/routes';
+
 const App = () => {
-  console.info(env);
-  return (
-    <>
-      <h1 className="text-3xl font-bold text-center underline bg-red-400">Protegix1</h1>
-      <Button>Add</Button>
-    </>
-  );
+  const router = createBrowserRouter(routes);
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;
