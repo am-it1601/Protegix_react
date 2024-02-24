@@ -11,7 +11,7 @@ module.exports = {
     theme: {
         container: {
             center: true,
-            padding: '2rem',
+            padding: '1rem',
             screens: {
                 '2xl': '1400px',
             },
@@ -29,6 +29,7 @@ module.exports = {
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',
                     foreground: 'hsl(var(--primary-foreground))',
+                    overlay: 'hsl(var(--primary-overlay))',
                 },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',

@@ -1,10 +1,10 @@
-import Home from './pages/Home/Home';
+import Home from './pages/home/Home';
 
 const App = () => {
     return (
-        <main className="text-2xl font-nunito">
+        <div className="font-nunito bg-background">
             <Home />
-        </main>
+        </div>
     );
 };
 
