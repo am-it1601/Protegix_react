@@ -1,11 +1,22 @@
 import './index.css';
 
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+import { AuthenticationContext } from './context';
+import React from 'react';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
+  <React.StrictMode>
+    <AuthenticationContext.Provider
+      value={{
+        authenticated: true,
+        currentUser: undefined,
+        isAdmin: false,
+        permissions: [],
+        token: null,
+      }}>
+      <App />
+    </AuthenticationContext.Provider>
+  </React.StrictMode>,
 );
