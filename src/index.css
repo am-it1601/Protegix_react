@@ -72,6 +72,9 @@
     .flex-between {
         @apply flex items-center justify-between;
     }
+    .flex-between-col {
+        @apply flex flex-col items-center justify-between;
+    }
 
     .flex-center {
         @apply flex items-center justify-center;
