@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Button } from '../ui/button';
-import { ChevronLeftIcon, DotsVerticalIcon } from '@radix-ui/react-icons';
 import { NavLink, useLocation } from 'react-router-dom';
+
 import { SidebarContext } from '@/context';
+import { ChevronLeftIcon, DotsVerticalIcon } from '@radix-ui/react-icons';
+
+import { Button } from '../ui/button';
 
 type SidebarProps = {
     children: React.ReactNode;
@@ -18,7 +20,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
     const { pathname } = useLocation();
     const [expanded, setexpanded] = useState(true);
     return (
-        <aside className="h-screen shadow-sm hover:shadow-lg bg-primary-foreground">
+        <aside className="h-screen shadow-lg hover:shadow-xl bg-secondary">
             <nav className="flex flex-col h-full shadow-sm ">
                 <div className="gap-2 p-4 flex-between">
                     <img src="https://img.logoipsum.com/330.svg" className={`overflow-hidden transition-all ${expanded ? 'w-32' : 'w-0'}`} alt="logo" />
