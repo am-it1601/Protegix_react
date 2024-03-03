@@ -194,6 +194,15 @@
     .p-medium-12 {
         @apply text-[12px] font-medium leading-[20px];
     }
+    .p-bold-12 {
+        @apply text-[12px] font-bold leading-[20px];
+    }
+    .p-regular-12 {
+        @apply text-[12px] font-normal leading-[20px];
+    }
+    .p-semibold-12 {
+        @apply text-[12px] font-semibold leading-[20px];
+    }
 }
 
 .sidemenu__tooltip {
