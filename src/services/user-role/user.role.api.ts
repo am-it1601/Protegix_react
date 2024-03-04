@@ -4,7 +4,6 @@ import { UserRoleResponseType } from 'types';
 import { UserRoleFormData } from '@/lib/zod/UserRoleSchema';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-console.log(API_BASE_URL)
 
 const axiosInstance = axios.create({ baseURL: API_BASE_URL });
 const getUserRoles = async () => {

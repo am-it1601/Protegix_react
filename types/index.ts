@@ -10,15 +10,23 @@ type GenericResponse<T> = {
     content?: T[];
 };
 export type UserRoleType = {
-    _id: string;
-    roleType: 'COMPANY_USER' | 'COMPANY_ADMIN';
-    name: string;
-    companyId: string;
-    company: Partial<CompanyType>;
-    numberOfUser?: number;
+  _id: string;
+  roleType: 'COMPANY_USER' | 'COMPANY_ADMIN';
+  name: string;
+  companyId: string;
+  company: Partial<CompanyType>;
+  numberOfUser?: number;
+};
+export type UserGroupType = {
+  _id: string;
+  name: string;
+  companyId: string;
+  company: Partial<CompanyType>;
+  numberOfUser?: number;
 };
 
 export type UserRoleResponseType = GenericResponse<UserRoleType>;
+export type UserGroupResponseType = GenericResponse<UserGroupType>;
 
 export type Theme = "dark" | "light" | "system"
 
