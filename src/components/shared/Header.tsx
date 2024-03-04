@@ -8,7 +8,7 @@ const Header = () => {
         <header className="w-full border-b drop-shadow-xl border-input bg-background">
             <div className="flex items-center justify-between wrapper-navbar">
                 <div>
-                    <h2 className="h2-bold-16">Demo Company</h2>
+                    <h2 className="h2-bold-16 text-primary">Demo Company</h2>
                 </div>
                 <nav className="hidden w-full max-w-xs md:flex-between">{/* <NavItem /> */}</nav>
                 <div className="flex justify-end w-32 gap-3">
