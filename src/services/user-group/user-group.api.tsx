@@ -1,4 +1,3 @@
-import { userGroupFormData } from '@/lib/zod/userGroupSchema';
 import axios from 'axios';
 import { UserGroupResponseType } from 'types';
 
@@ -25,4 +24,4 @@ const updateUserGroup = async (formData: any) => {
     return (await axiosInstance.put<UserGroupResponseType>('user-group', formData)).data;
 };
 
-export { userGroup, saveUserGroup, updateUserGroup };
+export { saveUserGroup, updateUserGroup, userGroup };

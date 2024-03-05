@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import RoleType from '@/components/dropdowns/RoleType';
@@ -32,6 +32,12 @@ const UserRoleForm: React.FC<UserAuthFormProps> = ({ className, type = 'Create',
     const submitForm = (formData: UserRoleFormData) => {
         console.log(formData, form.formState.errors);
         mutate(formData);
+    };
+    const handleCancel = () => {
+        form.reset({
+            name: '',
+            roleType: undefined,
+        });
     };
 
     return (
@@ -80,7 +86,7 @@ const UserRoleForm: React.FC<UserAuthFormProps> = ({ className, type = 'Create',
                     </CardContent>
                     <CardFooter>
                         <div className="gap-4 ml-auto flex-between">
-                            <Button variant="destructive" className="gap-2 rounded-sm">
+                            <Button variant="destructive" className="gap-2 rounded-sm" type="button" onClick={handleCancel} disabled={isPending || !form.formState.isDirty}>
                                 <CircleBackslashIcon />
                                 Cancel
                             </Button>

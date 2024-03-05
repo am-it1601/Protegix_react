@@ -1,10 +1,11 @@
+import React from 'react';
+import { useForm } from 'react-hook-form';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import * as z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { userGroupFormData, userGroupSchema } from '@/lib/zod/userGroupSchema';
@@ -27,6 +28,10 @@ const UserGroupForm: React.FC<UserGroupFormProps> = ({ className, type = 'Create
 
     const handleSubmit = (formData: z.infer<typeof userGroupSchema>) => {
         mutate({ name: formData.name, companyId: '65e2fd77518effe02e3c2cbd' });
+    };
+
+    const handleCancel = () => {
+        form.reset(); // Reset the form fields
     };
 
     return (
@@ -67,7 +72,7 @@ const UserGroupForm: React.FC<UserGroupFormProps> = ({ className, type = 'Create
                         </CardContent>
                         <CardFooter>
                             <div className="gap-4 ml-auto flex-between">
-                                <Button variant="destructive" className="gap-2 rounded-sm" type="button">
+                                <Button variant="destructive" className="gap-2 rounded-sm" type="button" onClick={handleCancel} disabled={isPending || !form.formState.isDirty}>
                                     <CircleBackslashIcon />
                                     Cancel
                                 </Button>
