@@ -33,12 +33,12 @@ export const user_columns: ColumnDef<any>[] = [
   },
   {
     header: 'User Group',
-    accessorKey: 'roleType',
+    accessorKey: 'name',
   },
 
   {
     header: 'No. Of Users',
-    accessorKey: 'no_of_users',
+    accessorKey: 'numOfUser',
   },
 
   {

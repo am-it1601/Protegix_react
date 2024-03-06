@@ -2,12 +2,19 @@ export type CompanyType = {
     name: string;
     _id: string;
 };
+export type TPageData= {
+  page: number;
+  limit: number | null;
+  totalItems: number;
+  itemsPerPage: number;
+}
 
 type GenericResponse<T> = {
     status: 'SUCCESS' | 'ERROR' | 'PENDING' | string;
     authenticated?: boolean;
     data?: T;
     content?: T[];
+    pageData?:TPageData
 };
 export type UserRoleType = {
   _id: string;

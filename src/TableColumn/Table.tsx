@@ -1,23 +1,17 @@
-import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table';
+import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable, type Table as TanstackTable } from '@tanstack/react-table';
 
+import Pagination from '@/components/pagination/pagination';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 interface DataTableProps<TData, TValue> {
+  table: TanstackTable<TData>;
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   pageSizeOptions?: number[];
 }
 
-export function NormalTable<TData, TValue>({ columns, data, pageSizeOptions = [10, 20, 30, 40, 50] }: DataTableProps<TData, TValue>) {
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-  });
+export function NormalTable<TData, TValue>({ pageSizeOptions = [10, 20, 30, 40, 50], table }: DataTableProps<TData, TValue>) {
   return (
     <div>
       {/* input */}
@@ -86,59 +80,7 @@ export function NormalTable<TData, TValue>({ columns, data, pageSizeOptions = [1
         </Table>
       </div>
       {/* pagination */}
-      <div className="flex flex-col items-center justify-between w-full gap-4  py-1 my-4 overflow-auto sm:flex-row sm:gap-8">
-        <div className="flex-1 text-sm whitespace-nowrap text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6 lg:gap-8">
-          <div className="flex items-center space-x-2">
-            <p className="text-sm font-medium whitespace-nowrap">Rows per page</p>
-            <Select
-              value={`${table.getState().pagination.pageSize}`}
-              onValueChange={(value) => {
-                table.setPageSize(Number(value));
-              }}>
-              <SelectTrigger className="h-8 w-[70px]">
-                <SelectValue placeholder={table.getState().pagination.pageSize} />
-              </SelectTrigger>
-              <SelectContent side="top">
-                {pageSizeOptions.map((pageSize) => (
-                  <SelectItem key={pageSize} value={`${pageSize}`}>
-                    {pageSize}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-          </div>
-          <div className="flex items-center space-x-2">
-            <Button
-              aria-label="Go to first page"
-              variant="outline"
-              className="hidden p-0 size-8 lg:flex"
-              onClick={() => table.setPageIndex(0)}
-              disabled={!table.getCanPreviousPage()}>
-              <DoubleArrowLeftIcon className="size-4" aria-hidden="true" />
-            </Button>
-            <Button aria-label="Go to previous page" variant="outline" className="p-0 size-8" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-              <ChevronLeftIcon className="size-4" aria-hidden="true" />
-            </Button>
-            <Button aria-label="Go to next page" variant="outline" className="p-0 size-8" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-              <ChevronRightIcon className="size-4" aria-hidden="true" />
-            </Button>
-            <Button
-              aria-label="Go to last page"
-              variant="outline"
-              className="hidden p-0 size-8 lg:flex"
-              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-              disabled={!table.getCanNextPage()}>
-              <DoubleArrowRightIcon className="size-4" aria-hidden="true" />
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* <Pagination table={table} pageSizeOptions={pageSizeOptions} /> */}
     </div>
   );
 }

@@ -4,12 +4,13 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { saveUserGroup, updateUserGroup, userGroup,  } from './user-group.api';
 
 
-export function useUserGroup() {
+export function useUserGroup(params: { page: number; limit: number }) {
     return useQuery({
-        queryKey: ['USER_GROUP'],
-        queryFn: userGroup,
+        queryKey: ['USER_GROUP', params], // Include params in the query key
+        queryFn: () => userGroup(params), // Pass params to the userGroup function
     });
 }
+
 
 type useAddOrUpdateUserGroupParams = {type: 'Create' | 'Edit'};
 
