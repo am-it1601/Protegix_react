@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useLogin } from '@/services/auth/auth.api.query';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -20,9 +21,10 @@ const LoginForm = () => {
             password: '',
         },
     });
+    const { mutate } = useLogin();
 
     const handleSubmit = (values: z.infer<typeof formSchema>) => {
-        console.info({ values });
+        mutate({ ...values, roleType: 'COMPANY_ADMIN' });
     };
     const handlePassword = () => {
         setShowPassword((prev) => !prev);

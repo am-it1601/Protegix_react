@@ -2,7 +2,11 @@ export type CompanyType = {
     name: string;
     _id: string;
 };
-
+export type TLogin={
+  email: string;
+  password: string;
+  roleType: 'COMPANY_ADMIN';
+}
 type GenericResponse<T> = {
     status: 'SUCCESS' | 'ERROR' | 'PENDING' | string;
     authenticated?: boolean;

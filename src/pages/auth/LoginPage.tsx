@@ -6,7 +6,7 @@ const LoginPage = () => {
             <div className="flex-1 bg-black p-20   ">
                 <div className="flex justify-between flex-col h-full">
                     <div className="">
-                        <img src="https://img.logoipsum.com/330.svg" className={`overflow-hidden transition-all w-32 h-32`} alt="logo" />
+                        <img src="https://img.logoipsum.com/330.svg" className="overflow-hidden transition-all w-32 h-32" alt="logo" />
                     </div>
                     <div>
                         <p className="text-white">
