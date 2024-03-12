@@ -1,14 +1,13 @@
-import { Navigate, Outlet, Route } from 'react-router-dom';
-
-import { useContext } from 'react';
-
-import { AuthenticationContext } from '@/context';
+import { AuthContext } from '@/context';
 import HomeLayout from '@/pages/layouts/HomeLayout';
+import { useContext } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoutes = () => {
-    const { authenticated } = useContext(AuthenticationContext);
-    console.log(authenticated);
-    return authenticated ? (
+    const { auth } = useContext(AuthContext);
+    console.log(auth);
+
+    return auth.authenticated ? (
         <HomeLayout>
             <Outlet />
         </HomeLayout>

@@ -51,7 +51,6 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
 export const SidebarItem: React.FunctionComponent<SidebarItemProps> = ({ icon, name, alert = false, href = '/' }) => {
     const { expanded, location } = useContext(SidebarContext);
     let active = href.endsWith(location);
-    console.log(active, location);
     return (
         <NavLink
             to={href}

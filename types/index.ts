@@ -3,7 +3,7 @@ export type CompanyType = {
     _id: string;
 };
 export type TLogin={
-  email: string;
+  username: string;
   password: string;
   roleType: 'COMPANY_ADMIN';
 }
@@ -44,3 +44,11 @@ export type ThemeProviderProps = {
   defaultTheme?: Theme
   storageKey?: string
 }
+
+export type Auth = {
+  authenticated: boolean;
+  currentUser: undefined;
+  isAdmin: boolean;
+  permissions: never[];
+  token: null;
+};

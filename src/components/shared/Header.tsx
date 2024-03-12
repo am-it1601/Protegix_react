@@ -1,7 +1,7 @@
 import { BellIcon, DotsVerticalIcon } from '@radix-ui/react-icons';
 
 import { Button } from '../ui/button';
-import { ModeToggle } from '../ui/ToggleTheme';
+import { ModeToggle } from '../provider/ToggleTheme';
 
 const Header = () => {
     return (
