@@ -1,7 +1,5 @@
-import React from 'react';
+import UserGroupForm from '@/components/features/user-management/user-role/userGroupForm';
 
-const CreateEditUserGroup = () => {
-    return <div>CreateEditUserGroup</div>;
-};
-
-export default CreateEditUserGroup;
+export function CreateEditUserGroup() {
+    return <UserGroupForm type={'Create'} />;
+}

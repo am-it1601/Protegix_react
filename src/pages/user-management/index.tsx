@@ -41,7 +41,7 @@ const UserManagement = () => {
                         <CardTitle>User Group</CardTitle>
                         <div className="flex-between">
                             <CardDescription>Change your password here. After saving, you'll be logged out.</CardDescription>
-                            <Button size={'sm'} variant="default" onClick={() => navigate('./role/create')}>
+                            <Button size={'sm'} variant="default" onClick={() => navigate('./user-group/create')}>
                                 Add New Group
                             </Button>
                         </div>
