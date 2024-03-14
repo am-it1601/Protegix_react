@@ -1,4 +1,5 @@
 import React from 'react';
+import { ROLE_TYPE as ROLE_TYPE_ENUM } from 'types';
 
 import { ROLE_TYPE } from '@/lib/constants';
 
@@ -6,12 +7,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 
 type RoleTypeDropdownProps = {
     onChangeHandler: (value: string) => void;
-    value: any;
+    value: ROLE_TYPE_ENUM;
 };
 
 const RoleType: React.FC<RoleTypeDropdownProps> = ({ onChangeHandler, value }) => {
     return (
-        <Select onValueChange={onChangeHandler} defaultValue={value}>
+        <Select onValueChange={onChangeHandler} defaultValue={value} value={value || ''}>
             <SelectTrigger className="select-field">
                 <SelectValue placeholder="Role Type" />
             </SelectTrigger>

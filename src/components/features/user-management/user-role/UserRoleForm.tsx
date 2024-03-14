@@ -80,11 +80,20 @@ const UserRoleForm: React.FC<UserAuthFormProps> = ({ className, type = 'Create',
                     </CardContent>
                     <CardFooter>
                         <div className="gap-4 ml-auto flex-between">
-                            <Button variant="destructive" className="gap-2 rounded-sm">
+                            <Button
+                                variant="destructive"
+                                className="gap-2 rounded-sm"
+                                type="reset"
+                                onClick={() => {
+                                    form.reset({
+                                        name: undefined,
+                                        roleType: undefined,
+                                    });
+                                }}>
                                 <CircleBackslashIcon />
                                 Cancel
                             </Button>
-                            <Button className="gap-2 rounded-sm" disabled={isPending || !form.formState.isDirty}>
+                            <Button className="gap-2 rounded-sm" disabled={isPending || !form.formState.isDirty} type="submit">
                                 <PlusCircledIcon />
                                 Add
                             </Button>
