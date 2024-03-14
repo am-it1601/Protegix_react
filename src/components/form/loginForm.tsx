@@ -1,14 +1,14 @@
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { AuthContext } from '@/context';
 import { useLogin } from '@/services/auth/auth.api.query';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '@/context';
-import { Checkbox } from '@/components/ui/checkbox';
+import * as z from 'zod';
 
 const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +18,7 @@ const LoginForm = () => {
     const formSchema = z.object({
         username: z.string().email(),
         password: z.string().min(8, 'Password must be at least 8 characters long'),
+        rememberMe: z.boolean().default(false).optional(),
     });
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -25,6 +26,7 @@ const LoginForm = () => {
         defaultValues: {
             username: '',
             password: '',
+            rememberMe: undefined,
         },
     });
 
@@ -89,12 +91,21 @@ const LoginForm = () => {
                         );
                     }}
                 />
-                <div className="flex items-center space-x-2">
-                    <Checkbox id="rememberMe" />
-                    <label htmlFor="rememberMe" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Remember me
-                    </label>
-                </div>
+
+                <FormField
+                    control={form.control}
+                    name="rememberMe"
+                    render={({ field }) => (
+                        <div className="flex items-center space-x-2">
+                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                            <label htmlFor="rememberMe" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Remember me
+                            </label>
+                            <FormMessage />
+                        </div>
+                    )}
+                />
+
                 <Button type="submit" className="l text-white mt-5 ">
                     Submit
                 </Button>
