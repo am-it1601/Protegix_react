@@ -13,9 +13,11 @@ type GenericResponse<T> = {
     data?: T;
     content?: T[];
 };
+
+export type ROLE_TYPE = 'COMPANY_USER' | 'COMPANY_ADMIN' | undefined;
 export type UserRoleType = {
   _id: string;
-  roleType: 'COMPANY_USER' | 'COMPANY_ADMIN';
+  roleType: ROLE_TYPE;
   name: string;
   companyId: string;
   company: Partial<CompanyType>;
