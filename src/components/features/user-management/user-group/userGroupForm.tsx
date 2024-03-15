@@ -1,22 +1,22 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { userGroupFormData, userGroupSchema } from '@/lib/zod/userGroupSchema';
+import { useAddOrUpdateUserGroup } from '@/services/query/user.group.query';
+import { WRITE_MODE } from '@/types/app';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Separator } from '@radix-ui/react-dropdown-menu';
 import { CircleBackslashIcon, PlusCircledIcon } from '@radix-ui/react-icons';
-import { useAddOrUpdateUserGroup } from '@/services/user-group/user.group.query';
 
 type UserGroupFormProps = React.HTMLAttributes<HTMLDivElement> & {
-    type: 'Create' | 'Edit';
+    type: WRITE_MODE;
 };
 
-const UserGroupForm: React.FC<UserGroupFormProps> = ({ className, type = 'Create', ...props }) => {
+const UserGroupForm: React.FC<UserGroupFormProps> = ({ className, type = 'CREATE', ...props }) => {
     const form = useForm<userGroupFormData>({
         resolver: zodResolver(userGroupSchema),
         defaultValues: {
@@ -34,7 +34,7 @@ const UserGroupForm: React.FC<UserGroupFormProps> = ({ className, type = 'Create
             <Card className="drop-shadow-lg">
                 <CardHeader>
                     <CardTitle>
-                        <CardTitle>{`${type === 'Create' ? 'Add New' : 'Edit'} User Group `}</CardTitle>
+                        <CardTitle>{`${type === 'CREATE' ? 'Add New' : 'Edit'} User Group `}</CardTitle>
                         <CardDescription className="py-2">
                             <span className="p-regular-14">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
                         </CardDescription>

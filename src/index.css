@@ -220,3 +220,7 @@
 .select-field {
     @apply py-4 rounded p-regular-14;
 }
+
+.login-overlay {
+    background: radial-gradient(circle, rgba(22, 163, 73, 1) 25%, rgb(12, 10, 9) 100%);
+}

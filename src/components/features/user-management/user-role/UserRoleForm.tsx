@@ -7,9 +7,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import { defaultUserRole } from '@/lib/constants';
+import { USER_ROLE_TYPE } from '@/constants/enums';
 import { UserRoleFormData, UserRoleSchema } from '@/lib/zod/UserRoleSchema';
-import { useAddOrUpdateUserRole } from '@/services/user-role/user.role.query';
+import { useAddOrUpdateUserRole } from '@/services/query/user.role.query';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CircleBackslashIcon, PlusCircledIcon } from '@radix-ui/react-icons';
 
@@ -20,8 +20,9 @@ type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 const UserRoleForm: React.FC<UserAuthFormProps> = ({ className, type = 'Create', ...props }) => {
-    const initialValue = { ...defaultUserRole, companyId: '65e2fd77518effe02e3c2cbd' };
+    const initialValue: UserRoleFormData = { name: '', roleType: USER_ROLE_TYPE.COMPANY_USER, companyId: '65e2fd77518effe02e3c2cbd' };
 
+    // TODO : Move the Form operation to userUserRoleFormHook
     const form = useForm<UserRoleFormData>({
         resolver: zodResolver(UserRoleSchema),
         defaultValues: { ...initialValue },

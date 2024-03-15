@@ -73,6 +73,10 @@ module.exports = {
             dropShadow: {
                 t: ['10px 0px 8px rgb(0 0 0 / 0.04)', '4px 0 3px rgb(0 0 0 / 0.1)'],
             },
+            backgroundImage : {
+                'login-screen' : "url('/login.webp')"
+            }
+            
         },
     },
     plugins: [require('tailwindcss-animate')],

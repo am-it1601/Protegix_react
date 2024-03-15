@@ -2,12 +2,12 @@ import { toast } from 'sonner';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
 
-import { getUserRoles, saveUserRole, updateUserRole } from './user.role.api';
+import { saveUserRole, searchUserRole, updateUserRole } from '../api/user.role.api';
 
 export function useUserRole() {
     return useQuery({
         queryKey: ['USER_ROLE'],
-        queryFn: getUserRoles,
+        queryFn: searchUserRole,
     });
 }
 

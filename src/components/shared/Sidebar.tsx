@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { SidebarContext } from '@/context';
+import { useAuthentication } from '@/hooks';
 import { ChevronLeftIcon, DotsVerticalIcon } from '@radix-ui/react-icons';
 
 import { Button } from '../ui/button';
@@ -17,6 +18,7 @@ type SidebarItemProps = {
 };
 
 const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
+    const { principal } = useAuthentication();
     const { pathname } = useLocation();
     const [expanded, setexpanded] = useState(true);
     return (
@@ -35,8 +37,8 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
                     <img src="https://ui-avatars.com/api/?bold=true" alt="user_picture" className="p-1 border rounded-full size-11 border-primary" />
                     <div className={`flex-between overflow-hidden transition-all ${expanded ? 'w-52' : 'w-0'}`}>
                         <div className="flex flex-col justify-center gap-1">
-                            <h4 className="p-semibold-16 text-primary">John Doe</h4>
-                            <span className="text-gray-500 p-regular-14">john.doe@gmail.com</span>
+                            <h4 className="p-semibold-16 text-primary">{principal?.displayName}</h4>
+                            <span className="text-gray-500 p-regular-14">{principal?.email}</span>
                         </div>
                         <Button variant="ghost" className="rounded-lg p-1.5 " size="icon">
                             <DotsVerticalIcon className="size-6" />

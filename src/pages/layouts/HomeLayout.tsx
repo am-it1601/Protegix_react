@@ -13,7 +13,7 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
                 <SidebarItem icon={<DashboardIcon className="size-5" />} name="Dashboard" href="/home" />
                 <SidebarItem icon={<PersonIcon className="size-5 " />} name="User Management" href="/user-management" />
             </Sidebar>
-            <div className="flex flex-col flex-1 h-screen gap-2 overflow-y-scroll">
+            <div className="flex flex-col flex-1 h-screen gap-2">
                 <Header />
                 <main className="container flex-1 py-4">
                     <div className="h-full">{children}</div>

@@ -1,9 +1,9 @@
 import React from 'react';
+import { UserRoleType } from 'types';
+
 import SkeletonTable from '@/components/skeleton/SkeletonTable';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { useUserRole } from '@/services/user-role/user.role.query';
-
-import { UserRoleType } from 'types';
+import { useUserRole } from '@/services/query/user.role.query';
 
 const UserRoleTable = () => {
     const { data, isLoading } = useUserRole();

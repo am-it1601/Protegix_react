@@ -1,14 +1,17 @@
-import { BellIcon, DotsVerticalIcon } from '@radix-ui/react-icons';
+import { useAuthentication } from '@/hooks';
+import { BellIcon } from '@radix-ui/react-icons';
 
 import { Button } from '../ui/button';
-import { ModeToggle } from '../provider/ToggleTheme';
+import { ModeToggle } from '../ui/ToggleTheme';
+import UserActionMenu from './UserActionMenu';
 
 const Header = () => {
+    const { principal } = useAuthentication();
     return (
         <header className="w-full border-b drop-shadow-xl border-input bg-background">
             <div className="flex items-center justify-between wrapper-navbar">
                 <div>
-                    <h2 className="h2-bold-16 text-primary">Demo Company</h2>
+                    <h2 className="h2-bold-16 text-primary">{principal?.company.name}</h2>
                 </div>
                 <nav className="hidden w-full max-w-xs md:flex-between">{/* <NavItem /> */}</nav>
                 <div className="flex justify-end w-32 gap-3">
@@ -23,9 +26,7 @@ const Header = () => {
                         <BellIcon />
                     </Button>
 
-                    <Button asChild size="icon" variant="ghost" className="p-2 rounded-full hover:shadow-lg ">
-                        <DotsVerticalIcon />
-                    </Button>
+                    <UserActionMenu />
                     {/* </SignedOut> */}
                 </div>
             </div>
