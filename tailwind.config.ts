@@ -1,12 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ['class'],
-    content: [
-        './pages/**/*.{ts,tsx}',
-        './components/**/*.{ts,tsx}',
-        './app/**/*.{ts,tsx}',
-        './src/**/*.{ts,tsx}',
-    ],
+    content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
     prefix: '',
     theme: {
         container: {
@@ -18,6 +13,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
+                DEFAULT: ['nunito', 'sans-serif'],
                 nunito: ['nunito', 'sans-serif'],
             },
             colors: {
@@ -29,7 +25,6 @@ module.exports = {
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',
                     foreground: 'hsl(var(--primary-foreground))',
-                    overlay: 'hsl(var(--primary-overlay))',
                 },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
@@ -75,6 +70,13 @@ module.exports = {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
+            dropShadow: {
+                t: ['10px 0px 8px rgb(0 0 0 / 0.04)', '4px 0 3px rgb(0 0 0 / 0.1)'],
+            },
+            backgroundImage : {
+                'login-screen' : "url('/login.webp')"
+            }
+            
         },
     },
     plugins: [require('tailwindcss-animate')],

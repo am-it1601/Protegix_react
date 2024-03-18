@@ -1,0 +1,33 @@
+export enum REQUEST_STATUS {
+    SUCCESS = 'SUCCESS',
+    FAILURE = 'FAILURE',
+    PENDING = 'PENDING',
+    REJECTED = 'REJECTED',
+}
+
+export enum SORT_ORDER {
+    ASC,
+    DESC,
+}
+
+export enum QUESTION_TYPE {
+    SINGLE_ANSWER = 'SINGLE_ANSWER',
+    MULTIPLE_ANSWER = 'MULTIPLE_ANSWER',
+}
+
+export enum Status {
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE',
+}
+
+export enum USER_ACCOUNT_STATUS {
+    ACTIVE = 'ACTIVE',
+    INACTIVE = 'INACTIVE',
+    INVITED = 'INVITED',
+    VERIFICATION_PENDING = 'VERIFICATION_PENDING',
+}
+
+export enum USER_ROLE_TYPE {
+    COMPANY_ADMIN = 'COMPANY_ADMIN',
+    COMPANY_USER = 'COMPANY_USER',
+}

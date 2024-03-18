@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Button } from '../ui/button';
+import { NavLink, useLocation } from 'react-router-dom';
+
+import { SidebarContext } from '@/context';
+import { useAuthentication } from '@/hooks';
 import { ChevronLeftIcon, DotsVerticalIcon } from '@radix-ui/react-icons';
+
+import { Button } from '../ui/button';
 
 type SidebarProps = {
     children: React.ReactNode;
@@ -9,52 +14,33 @@ type SidebarItemProps = {
     name?: string;
     icon?: React.ReactElement;
     alert?: boolean;
-    active: boolean;
+    href: string;
 };
-const SidebarContext = createContext({ expanded: true });
+
 const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
+    const { principal } = useAuthentication();
+    const { pathname } = useLocation();
     const [expanded, setexpanded] = useState(true);
     return (
-        <aside className="h-screen shadow-sm hover:shadow-lg bg-primary-foreground">
+        <aside className="h-screen border border-l drop-shadow-xl bg-background border-input">
             <nav className="flex flex-col h-full shadow-sm ">
                 <div className="gap-2 p-4 flex-between">
-                    <img
-                        src="https://img.logoipsum.com/330.svg"
-                        className={`overflow-hidden transition-all ${expanded ? 'w-32' : 'w-0'}`}
-                        alt="logo"
-                    />
-                    <Button
-                        variant="ghost"
-                        className="rounded-lg p-1.5"
-                        size="icon"
-                        onClick={() => setexpanded(curr => !curr)}
-                    >
+                    <img src="https://img.logoipsum.com/330.svg" className={`overflow-hidden transition-all ${expanded ? 'w-32' : 'w-0'}`} alt="logo" />
+                    <Button variant="ghost" className="rounded-lg p-1.5" size="icon" onClick={() => setexpanded((curr) => !curr)}>
                         <ChevronLeftIcon className="size-10" />
                     </Button>
                 </div>
-                <SidebarContext.Provider value={{ expanded }}>
+                <SidebarContext.Provider value={{ expanded, location: pathname }}>
                     <ul className="flex-1 px-4">{children}</ul>
                 </SidebarContext.Provider>
                 <div className="flex gap-3 p-4 border-t flex-between">
-                    <img
-                        src="https://ui-avatars.com/api/?bold=true"
-                        alt="user_picture"
-                        className="rounded-md size-10"
-                    />
-                    <div
-                        className={`flex-between overflow-hidden transition-all ${expanded ? 'w-52' : 'w-0'}`}
-                    >
+                    <img src="https://ui-avatars.com/api/?bold=true" alt="user_picture" className="p-1 border rounded-full size-11 border-primary" />
+                    <div className={`flex-between overflow-hidden transition-all ${expanded ? 'w-52' : 'w-0'}`}>
                         <div className="flex flex-col justify-center gap-1">
-                            <h4 className="p-semibold-16">John Doe</h4>
-                            <span className="text-gray-500 p-regular-14">
-                                john.doe@gmail.com
-                            </span>
+                            <h4 className="p-semibold-16 text-primary">{principal?.displayName}</h4>
+                            <span className="text-gray-500 p-regular-14">{principal?.email}</span>
                         </div>
-                        <Button
-                            variant="ghost"
-                            className="rounded-lg p-1.5 "
-                            size="icon"
-                        >
+                        <Button variant="ghost" className="rounded-lg p-1.5 " size="icon">
                             <DotsVerticalIcon className="size-6" />
                         </Button>
                     </div>
@@ -64,32 +50,22 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
     );
 };
 
-export const SidebarItem: React.FunctionComponent<SidebarItemProps> = ({
-    icon,
-    name,
-    active = false,
-    alert = false,
-}) => {
-    const { expanded } = useContext(SidebarContext);
+export const SidebarItem: React.FunctionComponent<SidebarItemProps> = ({ icon, name, alert = false, href = '/' }) => {
+    const { expanded, location } = useContext(SidebarContext);
+    let active = href.endsWith(location);
     return (
-        <li
+        <NavLink
+            to={href}
             className={`relative flex items-center p-4 my-1.5 font-medium leading-4 transition-colors  rounded 
-            ${active ? 'bg-foreground/15' : 'hover:bg-foreground/10'} 
+            ${active ? 'bg-primary text-primary-foreground' : 'hover:bg-primary/20'} 
             group`}
+            // onClick={() => <Navigate to={href} />}
         >
             {icon}
-            <span
-                className={`overflow-hidden transition-all p-regular-16 ${expanded ? 'ml-3 w-52' : 'hidden'}`}
-            >
-                {name}
-            </span>
-            {alert && (
-                <div
-                    className={`absolute rounded size-2 bg-primary right-3 ${expanded ? '' : 'top-3'}`}
-                ></div>
-            )}
+            <span className={`overflow-hidden transition-all p-regular-16 ${expanded ? 'ml-3 w-52' : 'hidden'}`}>{name}</span>
+            {alert && <div className={`absolute rounded size-2 bg-primary right-3 ${expanded ? '' : 'top-3'}`}></div>}
             {!expanded && <div className="sidemenu__tooltip">{name}</div>}
-        </li>
+        </NavLink>
     );
 };
 
