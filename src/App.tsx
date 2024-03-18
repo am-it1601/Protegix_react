@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import PrivateRoutes from './components/guards/PrivateRoutes';
 import { ThemeProvider } from './context/provider/ThemeProvider';
+import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
+import AuthPageLayout from './pages/auth/layout';
 import LoginPage from './pages/auth/LoginPage';
 import Dashboard from './pages/dashboard';
 import RootLayout from './pages/layouts/RootLayout';
@@ -26,7 +28,10 @@ const App = () => {
                             </Route>
                         </Route>
                     </Route>
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route element={<AuthPageLayout />}>
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                    </Route>
                     <Route path="/" element={<RootLayout />} />
                 </Routes>
             </Router>

@@ -6,7 +6,7 @@ import { useAuthentication } from '@/hooks';
 import { ILoggedInUser } from '@/types/models';
 import { useMutation } from '@tanstack/react-query';
 
-import { login, logout } from '../api/auth.api';
+import { forgotPassword, login, logout } from '../api/auth.api';
 
 type useLoginParams = {
     redirect:string;
@@ -50,3 +50,18 @@ export function useLogout() {
         },
     });
 }
+
+export function useForgotPassword() {
+    return useMutation({
+        mutationFn : forgotPassword,
+        mutationKey : ['AUTH'],
+        onError: (error, variables, context) => {
+            console.log('Error')
+            toast.error('Error Occured');
+        },
+        onSuccess: (data, variables, context) => {
+            toast.success('Email sent Successfully');
+            
+        },
+    })
+    }
