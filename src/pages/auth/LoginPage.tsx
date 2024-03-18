@@ -12,7 +12,7 @@ const renderLogin = (redirectUrl: string) => {
                 <p className="text-sm text-muted-foreground">Enter your email below to create your account</p>
             </div>
 
-            <LoginForm redirectUrl={redirectUrl} className="w-full" />
+            <LoginForm redirectUrl={redirectUrl} className="w-full" showRememberMe showForgotPassword />
         </>
     );
 };

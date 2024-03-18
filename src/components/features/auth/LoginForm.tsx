@@ -1,5 +1,6 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -13,8 +14,10 @@ import { useLoginForm } from './useLoginForm';
 
 type LoginFormProps = {
     redirectUrl: string;
+    showForgotPassword: boolean;
+    showRememberMe: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
-const LoginForm: React.FC<LoginFormProps> = ({ className, redirectUrl, ...props }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ className, redirectUrl, showForgotPassword = false, showRememberMe = false, ...props }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const { submit, form, isPending } = useLoginForm({ redirectUrl: redirectUrl || '/home' });
@@ -62,21 +65,29 @@ const LoginForm: React.FC<LoginFormProps> = ({ className, redirectUrl, ...props 
                             );
                         }}
                     />
-                    <FormField
-                        control={form.control}
-                        name="rememberMe"
-                        render={({ field }) => {
-                            return (
-                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 self-end">
-                                    <FormControl>
-                                        <Checkbox id="rememberMe" checked={field.value} onCheckedChange={field.onChange} className="w-5 h-5" />
-                                    </FormControl>
-                                    <FormLabel className="p-regular-12">Remember me ?</FormLabel>
-                                </FormItem>
-                            );
-                        }}
-                    />
-
+                    <div className="flex justify-between py-2 px-1">
+                        {showRememberMe && (
+                            <FormField
+                                control={form.control}
+                                name="rememberMe"
+                                render={({ field }) => {
+                                    return (
+                                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 self-end">
+                                            <FormControl>
+                                                <Checkbox id="rememberMe" checked={field.value} onCheckedChange={field.onChange} className="w-5 h-5" />
+                                            </FormControl>
+                                            <FormLabel className="p-regular-12">Remember me ?</FormLabel>
+                                        </FormItem>
+                                    );
+                                }}
+                            />
+                        )}
+                        {showForgotPassword && (
+                            <Link to="/forgot-password" className="p-regular-12 text-primary">
+                                Forgot Password ?
+                            </Link>
+                        )}
+                    </div>
                     <SelectSeparator className="bg-input my-5" />
                     <Button type="submit" disabled={isPending || (form.formState.isDirty && !form.formState.isValid)}>
                         {!isPending ? <LockClosedIcon className="mr-2 h-4 w-4" /> : <SymbolIcon className="mr-2 h-4 w-4 animate-spin" />}
