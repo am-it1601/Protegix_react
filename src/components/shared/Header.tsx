@@ -8,7 +8,7 @@ import UserActionMenu from './UserActionMenu';
 const Header = () => {
     const { principal } = useAuthentication();
     return (
-        <header className="w-full border-b drop-shadow-xl border-input bg-background">
+        <header className="w-full border-b drop-shadow-xl border-input bg-background sticky">
             <div className="flex items-center justify-between wrapper-navbar">
                 <div>
                     <h2 className="h2-bold-16 text-primary">{principal?.company.name}</h2>
