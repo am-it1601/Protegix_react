@@ -10,7 +10,7 @@ import { SelectSeparator } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { LockClosedIcon, SymbolIcon } from '@radix-ui/react-icons';
 
-import { useLoginForm } from './useLoginForm';
+import { useLoginForm } from './hooks';
 
 type LoginFormProps = {
     redirectUrl: string;
