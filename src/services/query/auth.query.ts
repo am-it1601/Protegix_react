@@ -52,15 +52,16 @@ export function useLogout() {
 }
 
 export function useForgotPassword() {
+   
     return useMutation({
         mutationFn : forgotPassword,
-        mutationKey : ['AUTH'],
         onError: (error, variables, context) => {
             console.log('Error')
             toast.error('Error Occured');
         },
         onSuccess: (data, variables, context) => {
             toast.success('Email sent Successfully');
+            
             
         },
     })
