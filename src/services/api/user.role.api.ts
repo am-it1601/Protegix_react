@@ -3,7 +3,7 @@ import axios from 'axios';
 import { UserRoleFormData } from '@/lib/zod/UserRoleSchema';
 import { UserRoleResponse, UserRoleSearchResponse } from '@/types/http';
 
-const API_BASE_URL = (import.meta as any).env.VITE_API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const axiosInstance = axios.create({ baseURL: API_BASE_URL });
 const searchUserRole = async () => {

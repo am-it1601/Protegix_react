@@ -39,3 +39,12 @@ export interface ILoggedInUser extends IUser {
     permissions:string[];
 
 }
+
+export interface IPermission extends BaseDocument{
+    module:string;
+    displayName:string;
+    access: [{
+        key:string;
+        value:string;
+    }]
+}

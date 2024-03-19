@@ -1,5 +1,6 @@
 import { toast } from 'sonner';
 
+import { WRITE_MODE } from '@/types/app';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { saveUserRole, searchUserRole, updateUserRole } from '../api/user.role.api';
@@ -11,12 +12,12 @@ export function useUserRole() {
     });
 }
 
-type useAddOrUpdateUserRoleParams = {type: 'Create' | 'Edit'};
+type useAddOrUpdateUserRoleParams = {type: WRITE_MODE};
 
 export function useAddOrUpdateUserRole({type }:useAddOrUpdateUserRoleParams){
     
     return useMutation({
-        mutationFn: type == 'Create' ? saveUserRole: updateUserRole,
+        mutationFn: type == 'CREATE' ? saveUserRole: updateUserRole,
         mutationKey: ['USER_ROLE'],
         onError : (error, variables, context) => {
             // An error happened!

@@ -1,3 +1,4 @@
+
 import { z } from 'zod';
 
 export const UserRoleSchema = z.object({
@@ -9,7 +10,8 @@ export const UserRoleSchema = z.object({
     roleType: z.enum(['COMPANY_ADMIN', 'COMPANY_USER'], {
         required_error : 'Role type must be selected',
         invalid_type_error : 'Invalid role type'
-    })
+    }),
+    permissions: z.array(z.string()),
 })
 
 export type UserRoleFormData = z.infer<typeof UserRoleSchema>

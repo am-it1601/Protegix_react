@@ -1,5 +1,5 @@
 import { AbstractResponseObject, PaginatedResponseObject } from './abstract';
-import { ILoggedInUser, IUserGroup, IUserRole } from './models';
+import { ILoggedInUser, IPermission, IUserGroup, IUserRole } from './models';
 
 export interface ILoginRequest {
     username: string;
@@ -17,3 +17,4 @@ export interface UserGroupResponse extends AbstractResponseObject<IUserGroup>{}
 
 export interface UserRoleSearchResponse extends PaginatedResponseObject<IUserRole>{}
 export interface UserRoleResponse extends AbstractResponseObject<IUserRole>{}
+export interface PermissionResponse extends AbstractResponseObject<IPermission[]>{}

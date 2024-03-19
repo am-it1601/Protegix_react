@@ -31,3 +31,9 @@ export enum USER_ROLE_TYPE {
     COMPANY_ADMIN = 'COMPANY_ADMIN',
     COMPANY_USER = 'COMPANY_USER',
 }
+
+export enum PERMISSION_SCOPE  {
+    "SYSTEM" = "SYSTEM",
+    "COMPANY" = "COMPANY",
+    "USER" = "USER"
+} 

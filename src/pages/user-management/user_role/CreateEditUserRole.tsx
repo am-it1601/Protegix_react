@@ -1,7 +1,7 @@
 import UserRoleForm from '@/components/features/user-management/user-role/UserRoleForm';
 
 const CreateEditUserRole = () => {
-    return <UserRoleForm type={'Create'} userRoleId={undefined} />;
+    return <UserRoleForm type={'CREATE'} userRoleId={undefined} />;
 };
 
 export default CreateEditUserRole;

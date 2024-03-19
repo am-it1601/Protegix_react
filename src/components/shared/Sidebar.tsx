@@ -22,7 +22,7 @@ const Sidebar: React.FunctionComponent<SidebarProps> = ({ children }) => {
     const { pathname } = useLocation();
     const [expanded, setexpanded] = useState(true);
     return (
-        <aside className="h-screen border border-l drop-shadow-xl bg-background border-input">
+        <aside className="h-screen border border-l drop-shadow-xl bg-background border-input  overflow-hidden">
             <nav className="flex flex-col h-full shadow-sm ">
                 <div className="gap-2 p-4 flex-between">
                     <img src="https://img.logoipsum.com/330.svg" className={`overflow-hidden transition-all ${expanded ? 'w-32' : 'w-0'}`} alt="logo" />
