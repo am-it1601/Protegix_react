@@ -5,9 +5,11 @@ import { useLogout } from '@/services/query/auth.query';
 import { DotsVerticalIcon, LockClosedIcon, PersonIcon } from '@radix-ui/react-icons';
 
 import { Button } from '../ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const UserActionMenu = () => {
     const { mutate } = useLogout();
+    const navigate = useNavigate();
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -16,7 +18,7 @@ const UserActionMenu = () => {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="bg-background">
-                <DropdownMenuItem onClick={() => alert('To be Implemented')} className="p-3">
+                <DropdownMenuItem onClick={() => navigate('/profile')} className="p-3">
                     <PersonIcon className="mr-2 w-4 h-4" />
                     <span>My Profile</span>
                 </DropdownMenuItem>

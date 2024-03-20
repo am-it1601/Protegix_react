@@ -10,6 +10,7 @@ import RootLayout from './pages/layouts/RootLayout';
 import UserManagement from './pages/user-management';
 import { CreateEditUserGroup } from './pages/user-management/user_group/CreateEditUserGroup';
 import CreateEditUserRole from './pages/user-management/user_role/CreateEditUserRole';
+import UserProfilePage from './pages/profile/userProfilePage';
 
 const App = () => {
     return (
@@ -25,8 +26,9 @@ const App = () => {
                             </Route>
                             <Route path="user-group">
                                 <Route path="create" element={<CreateEditUserGroup />} />
-                            </Route>
+                            </Route>{' '}
                         </Route>
+                        <Route path="profile" element={<UserProfilePage />} />
                     </Route>
                     <Route element={<AuthPageLayout />}>
                         <Route path="/login" element={<LoginPage />} />
