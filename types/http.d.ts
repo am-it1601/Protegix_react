@@ -19,4 +19,4 @@ export interface UserRoleSearchResponse extends PaginatedResponseObject<IUserRol
 export interface UserRoleResponse extends AbstractResponseObject<IUserRole>{}
 export interface PermissionResponse extends AbstractResponseObject<IPermission[]>{}
 
-export interface CompanyLicenseInfoResponse extends AbstractResponseObject<licenseInfo> {}
+export interface CompanyInfoResponse extends AbstractResponseObject<licenseInfo> {}

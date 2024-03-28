@@ -3,6 +3,8 @@ import { PersonIcon } from '@radix-ui/react-icons';
 
 const RegisterCard = () => {
   const { data, isLoading, error } = useCompanyInfo();
+  const { registeredUsers, remainingLicense } = data?.data || {};
+
   return (
     <>
       <div className="flex gap-4 items-center">
@@ -14,7 +16,7 @@ const RegisterCard = () => {
             </span>
           </div>
           <div>
-            <span className="p-bold-24">+{data?.data?.registeredUsers}</span>
+            <span className="p-bold-24">+{registeredUsers}</span>
           </div>
         </div>
 
@@ -26,7 +28,7 @@ const RegisterCard = () => {
             </span>
           </div>
           <div>
-            <span className="p-bold-24">+{data?.data?.remainingLicense}</span>
+            <span className="p-bold-24">+{remainingLicense}</span>
           </div>
         </div>
       </div>
